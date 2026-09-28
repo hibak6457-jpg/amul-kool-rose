@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amul KOOL Rose — Real Milk, Real Taste | 3D Interactive Experience</title>
+  <meta name="description" content="Immerse in the sensory journey of Amul Kool Rose flavoured milk. Smooth scroll-driven animation capturing the velvety splash of authentic dairy goodness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-rose">
+  <!-- Preloader Screen -->
+  <div id="preloader" class="preloader">
+    <div class="loader-content">
+      <div class="loader-bottle-glow"></div>
+      <div class="brand-crest">
+        <span class="amul-text">Amul</span>
+        <span class="kool-text">KOOL</span>
+      </div>
+      <div class="loader-text-wrap">
+        <h2 id="loader-status">Chilling the Milk...</h2>
+        <p id="loader-sub">Preparing 240 high-definition frames of pure delight</p>
+      </div>
+      <div class="loader-track">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+      <div class="loader-meta">
+        <span id="loader-percent">0%</span>
+        <span class="loader-flavor">DAMASK ROSE INFUSION</span>
+      </div>
+      <button id="skip-loader-btn" class="skip-btn hidden">Enter Experience</button>
+    </div>
+  </div>
+
+  <!-- Custom Cursor & Ambient Particles -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Global Navigation Header -->
+  <header class="glass-nav" id="main-nav">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Amul Kool Home">
+        <div class="logo-badge">
+          <span class="logo-amul">Amul</span>
+          <span class="logo-sub">The Taste of India</span>
+        </div>
+        <div class="product-tag">
+          <span class="pulse-dot"></span>
+          <span class="tag-title">KOOL ROSE</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#hero-track" class="nav-link active">3D Showcase</a>
+        <a href="#flavours" class="nav-link">Flavours</a>
+        <a href="#purity" class="nav-link">Dairy Purity</a>
+        <a href="#nutrition" class="nav-link">Nutrition</a>
+        <a href="#reviews" class="nav-link">Stories</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Web Audio Procedural Sound Toggle -->
+        <button id="sound-btn" class="nav-icon-btn sound-toggle" title="Toggle Chill Sounds" aria-label="Toggle Chill Audio">
+          <div class="sound-bars">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+          </div>
+          <span class="sound-label">Chill Sound</span>
+        </button>
+
+        <!-- Auto Tour Button -->
+        <button id="tour-btn" class="nav-btn-secondary" title="Play automatic scroll sequence">
+          <span class="play-icon">▶</span>
+          <span class="tour-text">Auto Tour</span>
+        </button>
+
+        <!-- Order / Cart Action -->
+        <button id="cart-open-btn" class="nav-btn-primary" aria-label="View Cart">
+          <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-text">Order Now</span>
+          <span class="cart-badge" id="cart-count">1</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scroll Animation Container (450vh depth for buttery smooth control) -->
+  <main id="hero-track" class="scroll-track-container">
+    <!-- Sticky Viewport -->
+    <div class="sticky-viewport">
+      <!-- Ambient Visual Effects -->
+      <div class="ambient-glow glow-top"></div>
+      <div class="ambient-glow glow-rose"></div>
+      <div class="ambient-glow glow-bottom"></div>
+      <div class="milk-mist-layer"></div>
+
+      <!-- The Core Canvas rendering 240 frames -->
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <canvas id="animation-canvas"></canvas>
+        <div class="canvas-vignette"></div>
+      </div>
+
+      <!-- Narrative Overlay Panels (Synchronized with scroll progress) -->
+      <div class="narrative-overlay" id="narrative-overlay">
+        
+        <!-- Step 1: 0% - 20% -->
+        <section class="story-step step-1 active" data-step="1">
+          <div class="step-badge">
+            <span class="badge-icon">🥛</span>
+            <span>100% REAL DAIRY GOODNESS</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-sub">The Legendary</span>
+            <span class="title-main">Amul KOOL <em class="rose-italic">Rose</em></span>
+          </h1>
+          <p class="hero-desc">
+            Fresh Anand cooperative milk gently whipped with fragrant Damask rose extracts. Chilled to velvety perfection.
+          </p>
+          <div class="feature-pills">
+            <div class="pill"><span class="pill-dot"></span> No Preservatives</div>
+            <div class="pill"><span class="pill-dot"></span> Bio-Available Calcium</div>
+            <div class="pill"><span class="pill-dot"></span> Real Gulab Essence</div>
+          </div>
+          <div class="scroll-prompt">
+            <div class="mouse-icon">
+              <div class="wheel"></div>
+            </div>
+            <span>Scroll down to splash into freshness</span>
+          </div>
+        </section>
+
+        <!-- Step 2: 24% - 48% (Splashing milk ribbons) -->
+        <section class="story-step step-2" data-step="2">
+          <div class="split-cards">
+            <div class="info-card left-card glass-card">
+              <div class="card-icon-wrap">
+                <span class="card-number">01</span>
+                <span class="card-chip">Cold Shocked</span>
+              </div>
+              <h3 class="card-heading">Sealed at 4°C</h3>
+              <p class="card-body">
+                Our flash-chilling process preserves the creamy richness of natural milk solids while intensifying the refreshing aroma of natural rose petals.
+              </p>
+              <div class="metric-meter">
+                <div class="metric-bar" style="width: 94%;"></div>
+                <span class="metric-label">Freshness Locked: 99.4%</span>
+              </div>
+            </div>
+
+            <div class="info-card right-card glass-card">
+              <div class="card-icon-wrap">
+                <span class="card-number">02</span>
+                <span class="card-chip">Indian Heritage</span>
+              </div>
+              <h3 class="card-heading">Desi Gulab Infusion</h3>
+              <p class="card-body">
+                Crafted using time-honored distillation of fragrant pink rose petals for that authentic, nostalgic summer nostalgia.
+              </p>
+              <div class="tag-row">
+                <span class="mini-tag">Traditional Aroma</span>
+                <span class="mini-tag">Natural Hue</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 3: 52% - 74% (Extreme close-up dynamic splash) -->
+        <section class="story-step step-3" data-step="3">
+          <div class="center-punchline">
+            <span class="punch-tag">EXPLOSION OF FLAVOUR</span>
+            <h2 class="punch-headline">A Symphony of Thick & Creamy Swirls</h2>
+            <p class="punch-sub">
+              Every drop dances with milk proteins and natural calcium, delivering an instant surge of cooling energy.
+            </p>
+          </div>
+
+          <!-- Hotspots Overlaid near bottle points -->
+          <div class="hotspots-container">
+            <div class="hotspot hotspot-cap" style="top: 22%; left: 50%;">
+              <div class="hotspot-beacon"></div>
+              <div class="hotspot-popup">
+                <strong>Hermetic Seal</strong>
+                <span>Preserves aromatic rose headspace until the moment you twist.</span>
+              </div>
+            </div>
+
+            <div class="hotspot hotspot-neck" style="top: 48%; left: 32%;">
+              <div class="hotspot-beacon"></div>
+              <div class="hotspot-popup">
+                <strong>Rich Milk Solids</strong>
+                <span>Whole dairy goodness sourced daily from over 3.6 million cooperative farmers.</span>
+              </div>
+            </div>
+
+            <div class="hotspot hotspot-glass" style="top: 68%; right: 30%;">
+              <div class="hotspot-beacon"></div>
+              <div class="hotspot-popup">
+                <strong>Rose Milkshake Texture</strong>
+                <span>Silky, thirst-quenching mouthfeel that beats the heat effortlessly.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 4: 78% - 100% (Suspended droplets & grand finale) -->
+        <section class="story-step step-4" data-step="4">
+          <div class="finale-card glass-card">
+            <div class="finale-badge">READY TO REFRESH</div>
+            <h2 class="finale-title">Chill Out With Amul KOOL</h2>
+            <p class="finale-desc">
+              Your go-to dairy companion after workouts, college breaks, summer drives, or midnight cravings.
+            </p>
+            
+            <div class="specs-grid">
+              <div class="spec-item">
+                <span class="spec-val">8.2<small>g</small></span>
+                <span class="spec-label">Natural Protein</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">240<small>mg</small></span>
+                <span class="spec-label">Bio-Calcium</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">100<small>%</small></span>
+                <span class="spec-label">Pure Dairy</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">₹25</span>
+                <span class="spec-label">Price per 200ml</span>
+              </div>
+            </div>
+
+            <div class="finale-cta-group">
+              <button class="primary-cta-btn add-pack-btn" data-variant="single">
+                <span>Grab Chilled Bottle</span>
+                <span class="btn-price">₹25</span>
+              </button>
+              <button class="secondary-cta-btn add-pack-btn" data-variant="box6">
+                <span>Party Box of 6</span>
+                <span class="btn-price">₹145</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Floating HUD Scrubber Bar & Telemetry Controls -->
+      <div class="floating-hud">
+        <div class="hud-left">
+          <button id="hud-play-btn" class="hud-btn" title="Toggle Play / Pause">
+            <span id="hud-play-icon">▶</span>
+          </button>
+          <div class="hud-info">
+            <span class="hud-label">FRAME SEQUENCE</span>
+            <span class="hud-val" id="hud-frame-num">001 / 240</span>
+          </div>
+        </div>
+
+        <div class="hud-scrubber-wrap">
+          <input type="range" id="hud-scrubber" min="0" max="239" value="0" step="1" aria-label="Scrub animation frames">
+          <div class="scrubber-ticks">
+            <span class="tick active" data-frame="0">Start</span>
+            <span class="tick" data-frame="60">Splash</span>
+            <span class="tick" data-frame="120">Velocity</span>
+            <span class="tick" data-frame="180">Vortex</span>
+            <span class="tick" data-frame="239">Chill</span>
+          </div>
+        </div>
+
+        <div class="hud-right">
+          <div class="telemetry-pill">
+            <span class="tele-dot"></span>
+            <span class="tele-label">TEMP</span>
+            <span class="tele-val" id="tele-temp">3.8°C</span>
+          </div>
+          <div class="telemetry-pill">
+            <span class="tele-label">SCROLL</span>
+            <span class="tele-val" id="tele-scroll">0%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Flavour Selector Laboratory -->
+  <section id="flavours" class="section flavour-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">THE KOOL UNIVERSE</span>
+        <h2 class="section-title">Explore The Full Spectrum of Chill</h2>
+        <p class="section-desc">From regal royal rose to rich roasted almonds, taste India's most beloved flavoured milk line-up.</p>
+      </div>
+
+      <div class="flavour-tabs" role="tablist">
+        <button class="flavour-tab active" data-flavor="rose" role="tab">
+          <span class="tab-dot" style="background:#e85d75;"></span> Rose
+        </button>
+        <button class="flavour-tab" data-flavor="kesar" role="tab">
+          <span class="tab-dot" style="background:#f4a226;"></span> Kesar
+        </button>
+        <button class="flavour-tab" data-flavor="badam" role="tab">
+          <span class="tab-dot" style="background:#d4a373;"></span> Badam
+        </button>
+        <button class="flavour-tab" data-flavor="elaichi" role="tab">
+          <span class="tab-dot" style="background:#80b918;"></span> Elaichi
+        </button>
+        <button class="flavour-tab" data-flavor="cafe" role="tab">
+          <span class="tab-dot" style="background:#8d5b4c;"></span> Cafe
+        </button>
+      </div>
+
+      <div class="flavour-display glass-card" id="flavour-display">
+        <div class="flavour-art">
+          <div class="flavour-ambient-bg" id="flavour-ambient"></div>
+          <div class="flavour-badge-circle" id="flavour-badge">
+            <span class="flavour-emoji" id="flavour-icon">🌹</span>
+          </div>
+        </div>
+        <div class="flavour-details">
+          <div class="flavour-heading-group">
+            <span class="flavour-tag" id="flavour-tag">ROYAL FLORAL BLEND</span>
+            <h3 class="flavour-title" id="flavour-title">Amul KOOL Rose</h3>
+            <p class="flavour-summary" id="flavour-desc">
+              Sweet, fragrant, and profoundly soothing. Distilled Damask rose petals blended seamlessly with whole cow milk for an unforgettable summer treat.
+            </p>
+          </div>
+
+          <div class="flavour-stats">
+            <div class="stat-box">
+              <span class="stat-num" id="flavour-energy">112 kcal</span>
+              <span class="stat-title">Energy / 100ml</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" id="flavour-protein">3.6g</span>
+              <span class="stat-title">Protein / 100ml</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" id="flavour-calcium">125mg</span>
+              <span class="stat-title">Calcium / 100ml</span>
+            </div>
+          </div>
+
+          <div class="flavour-footer">
+            <div class="flavour-price-tag">
+              <span class="mrp-label">MRP</span>
+              <span class="mrp-val">₹25.00</span>
+              <span class="mrp-unit">(200ml Bottle)</span>
+            </div>
+            <button class="add-to-cart-action-btn" id="flavour-add-btn">
+              <span>Add to Basket</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dairy Purity & White Revolution Section -->
+  <section id="purity" class="section purity-section">
+    <div class="section-container">
+      <div class="split-section">
+        <div class="purity-content">
+          <span class="section-subtitle">THE ANAND HERITAGE</span>
+          <h2 class="section-title">Rooted in Purity, Powered by Farmers</h2>
+          <p class="section-desc">
+            Amul is not just a brand; it is an epoch-making cooperative movement founded in 1946 by Tribhuvandas Patel and guided by Sardar Vallabhbhai Patel and Dr. Verghese Kurien.
+          </p>
+
+          <div class="heritage-features">
+            <div class="heritage-item">
+              <div class="heritage-icon">🌱</div>
+              <div class="heritage-text">
+                <h4>3.6 Million Dairy Farmers</h4>
+                <p>Every bottle empowers rural families with guaranteed fair prices and sustainable livelihoods.</p>
+              </div>
+            </div>
+            <div class="heritage-item">
+              <div class="heritage-icon">🔬</div>
+              <div class="heritage-text">
+                <h4>Zero Adulteration Guarantee</h4>
+                <p>Over 40 laboratory tests conducted on every milk batch before bottling.</p>
+              </div>
+            </div>
+            <div class="heritage-item">
+              <div class="heritage-icon">❄️</div>
+              <div class="heritage-text">
+                <h4>Continuous Cold Chain</h4>
+                <p>From village collection centers to refrigerated transport, kept consistently at 4°C.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="purity-infographic glass-card">
+          <div class="coop-graphic">
+            <div class="graphic-stat-card">
+              <span class="stat-highlight">100%</span>
+              <span class="stat-label">Farmer Owned</span>
+            </div>
+            <div class="graphic-stat-card">
+              <span class="stat-highlight">30M+</span>
+              <span class="stat-label">Litres / Day Collected</span>
+            </div>
+            <div class="graphic-stat-card">
+              <span class="stat-highlight">#1</span>
+              <span class="stat-label">Dairy Brand in Asia</span>
+            </div>
+            <div class="graphic-stat-card">
+              <span class="stat-highlight">18,600+</span>
+              <span class="stat-label">Village Co-op Societies</span>
+            </div>
+          </div>
+          <div class="trust-quote">
+            <p>“The taste of India is the pride of every dairy farmer who pours their heart into every dawn.”</p>
+            <span>— Gujarat Co-operative Milk Marketing Federation (GCMMF)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nutrition Matrix Section -->
+  <section id="nutrition" class="section nutrition-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">TRANSPARENT INGREDIENTS</span>
+        <h2 class="section-title">What Goes Inside Your Amul Kool Bottle</h2>
+        <p class="section-desc">Pure nourishment without compromises. Real nutrients your body craves.</p>
+      </div>
+
+      <div class="nutrition-grid">
+        <div class="nutri-card glass-card">
+          <div class="nutri-header">
+            <span class="nutri-icon">💪</span>
+            <h4>Bio-Protein</h4>
+          </div>
+          <div class="nutri-body">
+            <div class="nutri-val">7.2g <small>/ bottle</small></div>
+            <p>High biological value whey and casein proteins for muscle recovery and all-day energy.</p>
+          </div>
+          <div class="nutri-bar-bg"><div class="nutri-bar-fill" style="width: 78%;"></div></div>
+        </div>
+
+        <div class="nutri-card glass-card">
+          <div class="nutri-header">
+            <span class="nutri-icon">🦴</span>
+            <h4>Dairy Calcium</h4>
+          </div>
+          <div class="nutri-body">
+            <div class="nutri-val">250mg <small>/ bottle</small></div>
+            <p>Supports robust bone density and dental strength, easily absorbed by the human body.</p>
+          </div>
+          <div class="nutri-bar-bg"><div class="nutri-bar-fill" style="width: 88%;"></div></div>
+        </div>
+
+        <div class="nutri-card glass-card">
+          <div class="nutri-header">
+            <span class="nutri-icon">✨</span>
+            <h4>Vitamin A & D</h4>
+          </div>
+          <div class="nutri-body">
+            <div class="nutri-val">Essential <small>Fortified</small></div>
+            <p>Immunity boosters that complement whole milk lipids for enhanced micronutrient uptake.</p>
+          </div>
+          <div class="nutri-bar-bg"><div class="nutri-bar-fill" style="width: 65%;"></div></div>
+        </div>
+
+        <div class="nutri-card glass-card">
+          <div class="nutri-header">
+            <span class="nutri-icon">🌿</span>
+            <h4>Damask Rose</h4>
+          </div>
+          <div class="nutri-body">
+            <div class="nutri-val">Pure <small>Extracts</small></div>
+            <p>Known in Ayurveda for its natural cooling Pitta-pacifying properties and uplifting scent.</p>
+          </div>
+          <div class="nutri-bar-bg"><div class="nutri-bar-fill" style="width: 95%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Stories & Testimonials -->
+  <section id="reviews" class="section reviews-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">INDIA'S LOVE AFFAIR</span>
+        <h2 class="section-title">Loved Across Every Generation</h2>
+        <p class="section-desc">Stories from train platforms, college canteens, road trips, and midnight study sessions.</p>
+      </div>
+
+      <div class="reviews-slider">
+        <div class="review-card glass-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">“Nothing on earth beats stopping at an Amul parlour on a 42°C summer afternoon and gulping an ice-cold Kool Rose bottle. Instant bliss!”</p>
+          <div class="review-author">
+            <div class="author-avatar">RD</div>
+            <div class="author-meta">
+              <h5>Rohan Deshmukh</h5>
+              <span>Pune, Maharashtra</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card glass-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">“The rose flavour is so subtle and authentic, not like those overly chemical syrups. Pure nostalgia in every single sip.”</p>
+          <div class="review-author">
+            <div class="author-avatar">AP</div>
+            <div class="author-meta">
+              <h5>Ananya Patel</h5>
+              <span>Ahmedabad, Gujarat</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card glass-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">“We stocked our office fridge with Amul Kool Rose and Kesar. The team refuses to drink soft drinks anymore! Real milk wins every time.”</p>
+          <div class="review-author">
+            <div class="author-avatar">KS</div>
+            <div class="author-meta">
+              <h5>Karan Sharma</h5>
+              <span>Bengaluru, Karnataka</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Cart Drawer -->
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h3>Your Amul Kool Basket</h3>
+      <button id="cart-close-btn" class="close-btn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div class="cart-item">
+        <div class="cart-item-img">🌹</div>
+        <div class="cart-item-details">
+          <h4>Amul KOOL Rose (200ml)</h4>
+          <span class="cart-item-price">₹25.00 each</span>
+          <div class="cart-qty-ctrl">
+            <button class="qty-btn" id="qty-minus">-</button>
+            <span class="qty-num" id="cart-qty">2</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+        </div>
+        <div class="cart-item-total" id="cart-item-subtotal">₹50.00</div>
+      </div>
+
+      <div class="cart-pack-upsell">
+        <span class="upsell-badge">PRO TIP</span>
+        <p>Get a 6-Pack Box & Save ₹10 with Free Priority Chill Bag!</p>
+        <button class="upsell-btn" id="upgrade-pack-btn">Switch to 6-Pack (₹140)</button>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-total-val">₹50.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Delivery</span>
+        <span class="free-pill">FREE (Cold Chain)</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn">
+        <span>Proceed to Quick Checkout</span>
+        <span class="checkout-arrow">→</span>
+      </button>
+      <span class="cart-trust">Guaranteed Fresh • Dispatched via Local Amul Cold-Hub</span>
+    </div>
+  </aside>
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="amul-text">Amul</span>
+          <span class="tagline">The Taste of India</span>
+        </div>
+        <p class="footer-motto">
+          Cooperative milk processing since 1946. Nurturing millions of lives with pure, authentic dairy nutrition.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Flavoured Milk Range</h5>
+        <ul>
+          <li><a href="#flavours">Amul Kool Rose</a></li>
+          <li><a href="#flavours">Amul Kool Kesar</a></li>
+          <li><a href="#flavours">Amul Kool Badam</a></li>
+          <li><a href="#flavours">Amul Kool Elaichi</a></li>
+          <li><a href="#flavours">Amul Kool Cafe</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>The Movement</h5>
+        <ul>
+          <li><a href="#purity">Anand Milk Revolution</a></li>
+          <li><a href="#purity">Farmer Empowerment</a></li>
+          <li><a href="#nutrition">Quality Assurance</a></li>
+          <li><a href="#hero-track">Scroll Animation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Experience</h5>
+        <div class="footer-experience-pills">
+          <button class="pill-action" id="footer-restart-btn">↺ Replay Hero Animation</button>
+          <button class="pill-action" id="footer-sound-btn">♫ Toggle Sound</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Gujarat Co-operative Milk Marketing Federation Ltd. (GCMMF). All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Locate Amul Parlour</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
