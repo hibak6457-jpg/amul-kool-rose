@@ -2,8 +2,8 @@
 
 An interactive, scroll-based 3D animated website built for **Amul Kool Rose**, showcasing the product through smooth frame-by-frame scroll animations and an engaging flavour selector.
 
-**Live Demo:** [Add your deployed link here, e.g. Netlify/Vercel]  
-**GitHub Repo:** [Add your repo link here]
+**Live Demo:** [https://amul-kool-rose-kappa.vercel.app/]  
+**GitHub Repo:** [https://github.com/hibak6457-jpg/amul-kool-rose]
 
 ---
 
@@ -113,7 +113,7 @@ http://localhost:3000
 ## Author
 
 **Hiba Khan**  
-📧 [your-email@example.com]  
-🔗 [Portfolio / LinkedIn / Fiverr profile link]
+hibak6457@gmail.com
+https://amul-kool-rose-kappa.vercel.app/
 
 ---
